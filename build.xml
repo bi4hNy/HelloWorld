@@ -239,7 +239,7 @@
       <fileset dir="${basedir}/WebRoot"/>
     </copy>
     <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF"/>
-    <copy file="${basedir}/WebRoot/WEB-INF/web.xml" tofile="${artifact.output.java_demo:war_exploded}/WEB-INF/web.xml"/>
+    <!--copy file="${basedir}/WebRoot/WEB-INF/web.xml" tofile="${artifact.output.java_demo:war_exploded}/WEB-INF/web.xml"/-->
     <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF"/>
     <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF/classes"/>
     <copy todir="${artifact.output.java_demo:war_exploded}/WEB-INF/classes">
