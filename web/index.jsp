@@ -11,6 +11,6 @@
     <title>hello world</title>
   </head>
   <body>
-  第一个java项目，启动成功!
+  第一个java项目，用jenkins启动成功啦!
   </body>
 </html>
