@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="java_demo" default="all">
+<project name="HelloWorld" default="all">
   
   
-  <property file="java_demo.properties"/>
+  <property file="build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -103,158 +103,158 @@
   <!-- Modules -->
   
   
-  <!-- Module java_demo -->
+  <!-- Module HelloWorld -->
   
-  <dirname property="module.java_demo.basedir" file="${ant.file}"/>
+  <dirname property="module.HelloWorld.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.java_demo" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.java_demo" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.java_demo" value="${project.jdk.classpath}"/>
+  <property name="module.jdk.home.HelloWorld" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.HelloWorld" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.HelloWorld" value="${project.jdk.classpath}"/>
   
-  <property name="compiler.args.java_demo" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+  <property name="compiler.args.HelloWorld" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
   
-  <property name="java_demo.output.dir" value="${module.java_demo.basedir}/WebRoot/WEB-INF/classes"/>
-  <property name="java_demo.testoutput.dir" value="${module.java_demo.basedir}/WebRoot/WEB-INF/classes"/>
+  <property name="HelloWorld.output.dir" value="${module.HelloWorld.basedir}/web/WEB-INF/classes"/>
+  <property name="HelloWorld.testoutput.dir" value="${module.HelloWorld.basedir}/web/WEB-INF/classes"/>
   
-  <path id="java_demo.module.bootclasspath">
+  <path id="HelloWorld.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
   
-  <path id="java_demo.module.production.classpath">
-    <path refid="${module.jdk.classpath.java_demo}"/>
-    <fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+  <path id="HelloWorld.module.production.classpath">
+    <path refid="${module.jdk.classpath.HelloWorld}"/>
+    <fileset dir="${basedir}/web/WEB-INF/lib">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
   
-  <path id="java_demo.runtime.production.module.classpath">
-    <pathelement location="${java_demo.output.dir}"/>
-    <fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+  <path id="HelloWorld.runtime.production.module.classpath">
+    <pathelement location="${HelloWorld.output.dir}"/>
+    <fileset dir="${basedir}/web/WEB-INF/lib">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
   
-  <path id="java_demo.module.classpath">
-    <path refid="${module.jdk.classpath.java_demo}"/>
-    <pathelement location="${java_demo.output.dir}"/>
-    <fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+  <path id="HelloWorld.module.classpath">
+    <path refid="${module.jdk.classpath.HelloWorld}"/>
+    <pathelement location="${HelloWorld.output.dir}"/>
+    <fileset dir="${basedir}/web/WEB-INF/lib">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
   
-  <path id="java_demo.runtime.module.classpath">
-    <pathelement location="${java_demo.output.dir}"/>
-    <fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+  <path id="HelloWorld.runtime.module.classpath">
+    <pathelement location="${HelloWorld.output.dir}"/>
+    <fileset dir="${basedir}/web/WEB-INF/lib">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
   
   
-  <patternset id="excluded.from.module.java_demo">
+  <patternset id="excluded.from.module.HelloWorld">
     <patternset refid="ignored.files"/>
   </patternset>
   
-  <patternset id="excluded.from.compilation.java_demo">
-    <patternset refid="excluded.from.module.java_demo"/>
+  <patternset id="excluded.from.compilation.HelloWorld">
+    <patternset refid="excluded.from.module.HelloWorld"/>
   </patternset>
   
-  <path id="java_demo.module.sourcepath">
-    <dirset dir="${module.java_demo.basedir}">
+  <path id="HelloWorld.module.sourcepath">
+    <dirset dir="${module.HelloWorld.basedir}">
       <include name="src"/>
     </dirset>
   </path>
   
   
-  <target name="compile.module.java_demo" depends="compile.module.java_demo.production,compile.module.java_demo.tests" description="Compile module java_demo"/>
+  <target name="compile.module.HelloWorld" depends="compile.module.HelloWorld.production,compile.module.HelloWorld.tests" description="Compile module HelloWorld"/>
   
-  <target name="compile.module.java_demo.production" depends="register.custom.compilers" description="Compile module java_demo; production classes">
-    <mkdir dir="${java_demo.output.dir}"/>
-    <javac2 destdir="${java_demo.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.java_demo}/javac">
-      <compilerarg line="${compiler.args.java_demo}"/>
-      <bootclasspath refid="java_demo.module.bootclasspath"/>
-      <classpath refid="java_demo.module.production.classpath"/>
-      <src refid="java_demo.module.sourcepath"/>
-      <patternset refid="excluded.from.compilation.java_demo"/>
+  <target name="compile.module.HelloWorld.production" depends="register.custom.compilers" description="Compile module HelloWorld; production classes">
+    <mkdir dir="${HelloWorld.output.dir}"/>
+    <javac2 destdir="${HelloWorld.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.HelloWorld}/javac">
+      <compilerarg line="${compiler.args.HelloWorld}"/>
+      <bootclasspath refid="HelloWorld.module.bootclasspath"/>
+      <classpath refid="HelloWorld.module.production.classpath"/>
+      <src refid="HelloWorld.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.HelloWorld"/>
     </javac2>
     
-    <copy todir="${java_demo.output.dir}">
-      <fileset dir="${module.java_demo.basedir}/src">
+    <copy todir="${HelloWorld.output.dir}">
+      <fileset dir="${module.HelloWorld.basedir}/src">
         <patternset refid="compiler.resources"/>
         <type type="file"/>
       </fileset>
     </copy>
   </target>
   
-  <target name="compile.module.java_demo.tests" depends="register.custom.compilers,compile.module.java_demo.production" description="compile module java_demo; test classes" unless="skip.tests"/>
+  <target name="compile.module.HelloWorld.tests" depends="register.custom.compilers,compile.module.HelloWorld.production" description="compile module HelloWorld; test classes" unless="skip.tests"/>
   
-  <target name="clean.module.java_demo" description="cleanup module">
-    <delete dir="${java_demo.output.dir}"/>
-    <delete dir="${java_demo.testoutput.dir}"/>
+  <target name="clean.module.HelloWorld" description="cleanup module">
+    <delete dir="${HelloWorld.output.dir}"/>
+    <delete dir="${HelloWorld.testoutput.dir}"/>
   </target>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
   
-  <target name="clean" depends="clean.module.java_demo, clean.artifact.java_demo:war_exploded" description="cleanup all"/>
+  <target name="clean" depends="clean.module.HelloWorld, clean.artifact.HelloWorld:war_exploded" description="cleanup all"/>
   
-  <target name="build.modules" depends="init, clean, compile.module.java_demo" description="build all modules"/>
+  <target name="build.modules" depends="init, clean, compile.module.HelloWorld" description="build all modules"/>
   
   <target name="init.artifacts">
-    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifacts.temp.dir" value="${basedir}/output"/>
     <property name="artifact.output.helloworld" value="${basedir}/out/artifacts/helloworld"/>
-    <property name="artifact.output.java_demo:war" value="${basedir}/out/artifacts/java_demo_war"/>
-    <property name="artifact.output.java_demo:war_exploded" value="${basedir}/out/artifacts/java_demo_war_exploded"/>
+    <property name="artifact.output.HelloWorld:war" value="${basedir}/out/artifacts/HelloWorld_war"/>
+    <property name="artifact.output.HelloWorld:war_exploded" value="${basedir}/out/artifacts/HelloWorld_war_exploded"/>
     <mkdir dir="${artifacts.temp.dir}"/>
     <property name="temp.jar.path.helloworld.war" value="${artifacts.temp.dir}/helloworld.war"/>
-    <property name="temp.jar.path.java_demo_war.war" value="${artifacts.temp.dir}/java_demo_war.war"/>
+    <property name="temp.jar.path.HelloWorld_war.war" value="${artifacts.temp.dir}/HelloWorld_war.war"/>
   </target>
   
-  <target name="clean.artifact.java_demo:war_exploded" description="clean java_demo:war exploded artifact output">
-    <delete dir="${artifact.output.java_demo:war_exploded}"/>
+  <target name="clean.artifact.HelloWorld:war_exploded" description="clean HelloWorld:war exploded artifact output">
+    <delete dir="${artifact.output.HelloWorld:war_exploded}"/>
   </target>
   
   <target name="artifact.helloworld" depends="init.artifacts" description="Build &#39;helloworld&#39; artifact">
     <property name="artifact.temp.output.helloworld" value="${artifacts.temp.dir}/helloworld"/>
-    <mkdir dir="${artifact.temp.output.helloworld}"/>
+    <!--mkdir dir="${artifact.temp.output.helloworld}"/-->
     <war destfile="${temp.jar.path.helloworld.war}">
-      <zipfileset dir="${basedir}/WebRoot"/>
+      <zipfileset dir="${basedir}/web"/>
     </war>
-    <copy file="${temp.jar.path.helloworld.war}" tofile="${artifact.temp.output.helloworld}/helloworld.war"/>
+    <!--copy file="${temp.jar.path.helloworld.war}" tofile="${artifact.temp.output.helloworld}/helloworld.war"/-->
   </target>
   
-  <target name="artifact.java_demo:war" depends="init.artifacts, artifact.java_demo:war_exploded" description="Build &#39;java_demo:war&#39; artifact">
-    <property name="artifact.temp.output.java_demo:war" value="${artifacts.temp.dir}/java_demo_war"/>
-    <mkdir dir="${artifact.temp.output.java_demo:war}"/>
-    <war destfile="${temp.jar.path.java_demo_war.war}">
-      <zipfileset dir="${artifact.output.java_demo:war_exploded}"/>
+  <!--target name="artifact.HelloWorld:war" depends="init.artifacts, artifact.HelloWorld:war_exploded" description="Build &#39;HelloWorld:war&#39; artifact">
+    <property name="artifact.temp.output.HelloWorld:war" value="${artifacts.temp.dir}/HelloWorld_war"/>
+    <mkdir dir="${artifact.temp.output.HelloWorld:war}"/>
+    <war destfile="${temp.jar.path.HelloWorld_war.war}">
+      <zipfileset dir="${artifact.output.HelloWorld:war_exploded}"/>
     </war>
-    <copy file="${temp.jar.path.java_demo_war.war}" tofile="${artifact.temp.output.java_demo:war}/java_demo_war.war"/>
-  </target>
+    <copy file="${temp.jar.path.HelloWorld_war.war}" tofile="${artifact.temp.output.HelloWorld:war}/HelloWorld_war.war"/>
+  </target-->
   
-  <target name="artifact.java_demo:war_exploded" depends="init.artifacts, compile.module.java_demo" description="Build &#39;java_demo:war exploded&#39; artifact">
-    <mkdir dir="${artifact.output.java_demo:war_exploded}"/>
-    <copy todir="${artifact.output.java_demo:war_exploded}">
-      <fileset dir="${basedir}/WebRoot"/>
+  <!--target name="artifact.HelloWorld:war_exploded" depends="init.artifacts, compile.module.HelloWorld" description="Build &#39;HelloWorld:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.HelloWorld:war_exploded}"/>
+    <copy todir="${artifact.output.HelloWorld:war_exploded}">
+      <fileset dir="${basedir}/web"/>
     </copy>
-    <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF"/>
-    <!--copy file="${basedir}/WebRoot/WEB-INF/web.xml" tofile="${artifact.output.java_demo:war_exploded}/WEB-INF/web.xml"/-->
-    <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF"/>
-    <mkdir dir="${artifact.output.java_demo:war_exploded}/WEB-INF/classes"/>
-    <copy todir="${artifact.output.java_demo:war_exploded}/WEB-INF/classes">
-      <fileset dir="${java_demo.output.dir}"/>
+    <mkdir dir="${artifact.output.HelloWorld:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/web/WEB-INF/web.xml" tofile="${artifact.output.HelloWorld:war_exploded}/WEB-INF/web.xml"/>
+    <mkdir dir="${artifact.output.HelloWorld:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.HelloWorld:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.HelloWorld:war_exploded}/WEB-INF/classes">
+      <fileset dir="${HelloWorld.output.dir}"/>
     </copy>
-  </target>
+  </target-->
   
-  <target name="build.all.artifacts" depends="artifact.helloworld, artifact.java_demo:war, artifact.java_demo:war_exploded" description="Build all artifacts">
+  <target name="build.all.artifacts" depends="artifact.helloworld" description="Build all artifacts">
     <mkdir dir="${artifact.output.helloworld}"/>
     <copy todir="${artifact.output.helloworld}">
       <fileset dir="${artifact.temp.output.helloworld}"/>
     </copy>
-    <mkdir dir="${artifact.output.java_demo:war}"/>
-    <copy todir="${artifact.output.java_demo:war}">
-      <fileset dir="${artifact.temp.output.java_demo:war}"/>
+    <mkdir dir="${artifact.output.HelloWorld:war}"/>
+    <copy todir="${artifact.output.HelloWorld:war}">
+      <fileset dir="${artifact.temp.output.HelloWorld:war}"/>
     </copy>
     
     <!-- Delete temporary files -->
