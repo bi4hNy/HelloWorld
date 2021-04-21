@@ -11,6 +11,6 @@
     <title>hello world</title>
   </head>
   <body>
-  用jenkins启动成功啦!
+  jenkins启动成功啦!
   </body>
 </html>
